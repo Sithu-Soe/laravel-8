@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, Uuids;
 
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
