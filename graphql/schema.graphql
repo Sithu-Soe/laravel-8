@@ -5,14 +5,70 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 type Query {
-    users: [User!]! @paginate(defaultCount: 10)
-    user(id: ID @eq): User @find
+    # users: [User!]! @paginate(defaultCount: 10)
+    users: [User!]! @paginate
+    # user(id: ID @eq): User @find
+    addresses: [Address!]! @paginate
 }
 
 type User {
-    id: ID!
+    id: String!
     name: String!
     email: String!
+    email_verified_at: DateTime
+    phone: String
+    phone_verified_at: DateTime
+    password: String!
+    default_address_id: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Address {
+    id: String!
+    address: String!
+    lat: ID
+    lng: ID
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Item {
+    id: String!
+    name: String!
+    photo: String
+    description: String
+    shop_id: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Order {
+    id: String!
+    customer_id: String!
+    location_id: String
+    lat: ID
+    lng: ID
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Owner {
+    id: String!
+    name: String!
+    phone: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Shop {
+    id: String!
+    name: String!
+    description: String
+    owner_id: String!
+    lat: ID
+    lng: ID
     created_at: DateTime!
     updated_at: DateTime!
 }
